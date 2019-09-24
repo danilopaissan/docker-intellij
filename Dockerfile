@@ -2,7 +2,7 @@ FROM openjdk:8-alpine
 
 MAINTAINER Danilo Paissan <danilo.paissan@gmail.com>
 
-ENV IDEA_JDK /usr/lib/jvm/zulu-8-amd64
+ENV IDEA_JDK /usr/lib/jvm/java-1.8-openjdk
 
 ENTRYPOINT ["/opt/idea-IU-192.6603.28/bin/idea.sh"]
 

@@ -27,5 +27,5 @@ to your X server.
 This project is licensed under the [Apache License Version 2.0, January 2004](http://www.apache.org/licenses/).
 
 # List of Changes
-* upgrade to IDEA 2017.3.4
+* upgrade to IDEA 2019.2.2
 * automatically detect and mount the user's home directory

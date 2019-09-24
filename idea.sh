@@ -2,8 +2,6 @@
 
 # Launches IntelliJ IDEA inside a Docker container
 
-IMAGE=${1:-kurron/docker-intellij:latest}
-
 DOCKER_GROUP_ID=$(cut -d: -f3 < <(getent group docker))
 USER_ID=$(id -u $(whoami))
 GROUP_ID=$(id -g $(whoami))
@@ -12,10 +10,6 @@ HOME_DIR=$(cut -d: -f6 < <(getent passwd ${USER_ID}))
 # Need to give the container access to your windowing system
 export DISPLAY=:0
 xhost +
-
-PULL="docker pull ${IMAGE}"
-echo ${PULL}
-${PULL}
 
 CMD="docker run --detach=true \
                 --group-add ${DOCKER_GROUP_ID} \
@@ -31,7 +25,7 @@ CMD="docker run --detach=true \
                 --volume /tmp/.X11-unix:/tmp/.X11-unix \
                 --volume /var/run/docker.sock:/var/run/docker.sock \
                 --workdir ${HOME} \
-                ${IMAGE}"
+                inellij-local"
 
 echo $CMD
 $CMD

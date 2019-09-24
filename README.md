@@ -10,17 +10,12 @@ Type `./buid.sh` to build the image.
 # Installation
 Docker will automatically install the newly built image into the cache.
 
-# Tips and Tricks
-
-## Launching The Image
-`./test.sh` will launch the image allowing you to begin working on projects.  
-
 ## Desktop Launcher
 
 # Troubleshooting
 
 ## X-Windows
-If the image complains that it cannot connect to your X server, simply run `xhost +` to allow the container to connect
+If the image complains that it cannot connect to your X server, simply run `xhost + 127.0.0.1` to allow the container to connect
 to your X server.
 
 # License and Credits

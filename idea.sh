@@ -23,6 +23,7 @@ CMD="docker run --detach=true \
                 --user=${USER_ID}:${GROUP_ID} \
                 --volume $HOME:${HOME} \
                 --volume /tmp/.X11-unix:/tmp/.X11-unix \
+                # XQuartz
                 --volume /var/run/docker.sock:/var/run/docker.sock \
                 --workdir ${HOME} \
                 --group-add staff \
@@ -35,6 +36,6 @@ echo $CMD
 CONTAINER=$($CMD)
 
 # Minor post-configuration
-docker exec --user=root -it $CONTAINER groupadd -g $DOCKER_GROUP_ID docker
+docker exec --user=root -it $CONTAINER groupadd -g $DOCKER_GROUP_ID staff
 
 docker attach $CONTAINER

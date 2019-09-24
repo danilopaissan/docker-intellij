@@ -2,10 +2,10 @@
 
 # Launches IntelliJ IDEA inside a Docker container
 
-DOCKER_GROUP_ID=$(cut -d: -f3 < <(getent group docker))
+DOCKER_GROUP_ID=$(dscl . -read /Groups/staff | awk '($1 == "PrimaryGroupID:") { print $2 }')
 USER_ID=$(id -u $(whoami))
 GROUP_ID=$(id -g $(whoami))
-HOME_DIR=$(cut -d: -f6 < <(getent passwd ${USER_ID}))
+HOME_DIR=$(dscl . -read /Users/${USER_ID} | awk '($1 == "NFSHomeDirectory:") { print $2 }')
 
 # Need to give the container access to your windowing system
 export DISPLAY=:0
@@ -25,6 +25,7 @@ CMD="docker run --detach=true \
                 --volume /tmp/.X11-unix:/tmp/.X11-unix \
                 --volume /var/run/docker.sock:/var/run/docker.sock \
                 --workdir ${HOME} \
+                --group-add staff \
                 inellij-local"
 
 echo $CMD

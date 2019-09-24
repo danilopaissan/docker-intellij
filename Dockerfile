@@ -1,6 +1,6 @@
-FROM kurron/docker-azul-jdk-8-build:latest
+FROM openjdk:8-alpine
 
-MAINTAINER Ron Kurr <kurr@kurron.org>
+MAINTAINER Danilo Paissan <danilo.paissan@gmail.com>
 
 ENV IDEA_JDK /usr/lib/jvm/zulu-8-amd64
 
